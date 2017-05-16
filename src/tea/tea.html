@@ -1,0 +1,20 @@
+<div class="row" ng-controller="TeaCtrl as tea">
+
+    <div class="card-header">
+        Price: {{tea.details.price}}
+        <i class="fa fa-usd"></i>
+    </div>
+
+    <img ng-if="tea.details.image" alt="{{tea.details.name}}" class="img-fluid" ng-src="{{tea.details.image}}">
+
+    <div class="card-block">
+        <h4 class="card-title">{{tea.details.name}}</h4>
+        <p class="card-text">{{tea.details.description}}</p>
+    </div>
+    <div class="card-block">
+        <a class="card-link" ng-href="{{tea.details.link}}">Details Ext</a>
+        <ngcart-addtocart id="{{tea.details.id}}" data="tea" name="{{tea.details.name}}" price="{{tea.details.price}}"
+                          quantity="1" quantity-max="5"><i class="fa fa-cart-plus"></i> Add to Cart
+        </ngcart-addtocart>
+    </div>
+</div>

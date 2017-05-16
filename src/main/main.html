@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Listing Featured Teas</h1>
+    </div>
+</div>
+
+<div class="row" ng-controller="MainCtrl as main">
+    <div class="card-columns">
+        <div class="card" ng-repeat="tea in main.teas track by $index">
+            <div class="card-header">
+                Price: {{tea.price}}
+                <i class="fa fa-usd"></i>
+            </div>
+
+            <img ng-if="tea.image" alt="{{tea.name}}" class="img-fluid" ng-src="{{tea.image}}">
+
+            <div class="card-block">
+                <h4 class="card-title">{{tea.name}}</h4>
+                <p class="card-text">{{tea.description}}</p>
+            </div>
+            <div class="card-block">
+                <a class="card-link" ng-href="/teas/{{tea.id}}">Product Page</a>
+                <a class="card-link" ng-href="{{tea.link}}">Details Source</a>
+                <ngcart-addtocart id="{{tea.id}}" data="tea" name="{{tea.name}}" price="{{tea.price}}" quantity="1" quantity-max="5"><i class="fa fa-cart-plus"></i> Add to Cart</ngcart-addtocart>
+            </div>
+        </div>
+    </div>
+</div>

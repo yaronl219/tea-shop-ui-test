@@ -1,0 +1,109 @@
+swagger: '2.0'
+info:
+  description: Tea Shop API
+  version: 1.0.0
+  title: Tea Shop API
+  contact:
+    email: admin@iangels.co
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+schemes:
+  - https
+  - http
+paths:
+  /teas:
+    get:
+      summary: Get all tea products
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: retrive all teas
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TeaItem'
+        '400':
+          description: bad input parameter
+  /teas/featured:
+    get:
+      summary: Get all expensive teas
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: retrive all expensive teas
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TeaItem'
+        '400':
+          description: bad input parameter
+  '/teas/{id}':
+    get:
+      summary: Get one tea product
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of tea to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: retrive one tea by Id
+          schema:
+            $ref: '#/definitions/TeaItem'
+        '400':
+          description: bad input parameter
+definitions:
+  TeaItem:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: Golden Orchid
+      description:
+        type: string
+        example: >-
+          Pure decadence, this black tea blend is packed full of deep creamy
+          cocoa notes! My goal for this tea was to bring the ice cream shop on
+          Mackinac Island into your cup! I began with North Winds – our black
+          tea with dessert notes inspired by the island’s famous fudge.
+      image:
+        type: string
+        example: >-
+          https://media.steepster.com/api/file/WRjUCwsPRaizfhwgIdML/convert?fit=crop&h=200&w=350
+      link:
+        type: string
+        example: >-
+          http://steepster.com/teas/whispering-pines-tea-company/43095-golden-orchid
+      price:
+        type: number
+      type:
+        type: string
+        enum:
+        - Black
+        - Chai
+        - Flowering
+        - Food
+        - Fruit
+        - Green
+        - Guayusa
+        - Herbal
+        - Honeybush
+        - Matcha
+        - Oolong
+        - Pu-Erh
+        - Rooibos
+        - White
+        - Yellow
+        - Yerba Maté
+host: 'localhost:3000'
