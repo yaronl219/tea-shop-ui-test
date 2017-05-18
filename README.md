@@ -1,4 +1,4 @@
-# tea-shop-ui
+# Tea Shop UI
 
 ## Build & development
 
@@ -48,7 +48,7 @@ which price is > 50
 }
 ```
 
-Please create the Ruby API in a separate project you may use the below seed data 
+Please create the Ruby API in a **separate project** you may use the below seed data 
 the Ruby Project should consist of a database containing tea products and the above endpoints.
 
 In addition to the API please complete the following files:
