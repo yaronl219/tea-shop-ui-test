@@ -10,9 +10,9 @@ Install
 Start
 -----
 
-- `npm i`
+Run `npm i` to install project dependencies 
 
-Run `npm start`
+Run `npm start` to start
 
 Task
 ----
