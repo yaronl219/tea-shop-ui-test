@@ -48,8 +48,9 @@ which price is > 50
 }
 ```
 
-Please create the Ruby API in a **separate project** you may use the below seed data 
-the Ruby Project should consist of a database containing tea products and the above endpoints.
+Please create the Ruby API in a **separate project** you may use the below seed data.
+The Ruby Project should consist of a database containing tea products and the above endpoints.
+The API base url should be `http://localhost:3000` 
 
 In addition to the API please complete the following files:
 - `src/teas/teas.html`
