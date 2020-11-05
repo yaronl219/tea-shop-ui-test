@@ -50,7 +50,9 @@ class AppCtrl {
 
 module.config(function ($locationProvider, $routeProvider, RestangularProvider) {
     $locationProvider.html5Mode(true)
-    RestangularProvider.setBaseUrl('http://localhost:3000');
+
+    RestangularProvider
+    .setBaseUrl('http://localhost:3000');
 });
 
 module

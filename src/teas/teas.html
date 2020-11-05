@@ -1,3 +1,60 @@
 <div class="row" ng-controller="TeasCtrl as teas">
+<!-- <h1>{{teas}}</h1> -->
+<div class="filters-bar">
+    <input id="tea-filter" type="text" ng-change="onFilter()" ng-model="filterBy" placeholder="Search tea by name"/>
+    <label for="tea-type">Filter by tea type:</label>
+    <select id="tea-type" ng-change="onFilter()" ng-model="filterType">
+        <option value="">All</option>
+        <option ng-repeat="type in teas.teaTypes" value="{{type}}">{{type}}</option>
+    </select>
+    <label for="sort-by">Sort By:</label>
+    <select id="sort-by" ng-change="onSort()" ng-model="sortBy">
+        <option value="name">Name</option>
+        <option value="prAs">Price - Ascending</option>
+        <option value="prDe">Price - Descending</option>
+    </select>
+    <button ng-click="toggleIsGrid()" class="btn-primary" ng-bind="(isGrid) ? 'Grid' : 'Table'"></button>
+</div>
+<!-- <ul>
+    <li ng-repeat="tea in teas.teasForDisplay">{{tea.name}}</li>
+</ul> -->
+<div ng-if="isGrid" class="card-columns">
+    <div class="card" ng-repeat="tea in teas.teasForDisplay track by $index">
+        <div class="card-header">
+            Price: ${{tea.price}}
+            <i class="fa fa-usd"></i>
+        </div>
+
+        <img ng-if="tea.image" alt="{{tea.name}}" class="img-fluid" ng-src="{{tea.image}}">
+
+        <div class="card-block">
+            <h4 class="card-title">{{tea.name}}</h4>
+            <p class="card-text">{{tea.description}}</p>
+        </div>
+        <div class="card-block">
+            <a class="card-link" ng-href="/teas/{{tea.id}}">Product Page</a>
+            <a class="card-link" ng-href="{{tea.tea_link}}">Details Source</a>
+            <ngcart-addtocart id="{{tea.id}}" data="tea" name="{{tea.name}}" price="{{tea.price}}" quantity="1" quantity-max="5"><i class="fa fa-cart-plus"></i> Add to Cart</ngcart-addtocart>
+        </div>
+    </div>
+</div>
+<div ng-if="!isGrid" class="tea-table">
+    <table>
+        <tr>
+            <th>Price</th>
+            <th>Name</th>
+            <th>Product Page</th>
+            <th>Details Source</th>
+            <th>Add To Cart</th>
+        </tr>
+        <tr ng-repeat="tea in teas.teasForDisplay">
+            <td>${{tea.price}}</td>
+            <td>${{tea.name}}</td>
+            <td><a ng-href="/teas/{{tea.id}}">Product Page</a></td>
+            <td><a class="card-link" ng-href="{{tea.tea_link}}">Details Source</a></td>
+            <td><ngcart-addtocart id="{{tea.id}}" data="tea" name="{{tea.name}}" price="{{tea.price}}" quantity="1" quantity-max="5"><i class="fa fa-cart-plus"></i> Add to Cart</ngcart-addtocart></td>
+        </tr>
+    </table>
+</div>
 
 </div>
